@@ -1,0 +1,40 @@
+.homepage{
+  height: 100vh;
+  color: white;
+}
+.bars {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebarPlaceholder {
+  width: 300px;
+}
+.rightSidebarPlaceholder {
+  display: none;
+}
+@media (min-width: 1500px) {
+  .bars {
+    padding-top: 0;
+  }
+}
+@media (max-width: 1500px) {
+  .rightSidebarPlaceholder {
+    display: block;
+  }
+}
+@media (max-width: 1100px) {
+  .sidebarPlaceholder {
+    width: 70px;
+  }
+}
+@media (max-width: 750px) {
+  .sidebarPlaceholder {
+    width: 70px;
+  }
+}
+@media (max-width: 550px) {
+  .sidebarPlaceholder {
+    width: 0;
+  }
+}

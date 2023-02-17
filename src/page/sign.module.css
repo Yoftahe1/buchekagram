@@ -1,0 +1,95 @@
+.sign{
+    width: 500px;
+    padding: 70px;
+    background-color: rgba(68, 85, 88, 0.26);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
+}
+.signType{
+    font-size: 30px;
+    color: #555;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+.inputType{
+    margin-top: 32px;
+    padding-bottom: 11px;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.4;
+    text-transform: uppercase;
+}
+.input{
+    outline: none;
+    border: 0.5px solid rgb(172, 172, 172);
+    color: #555;
+    line-height: 1.2;
+    font-size: 18px;
+    height: 55px;
+    padding: 0 25px;
+    width: 100%;
+}
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+.forgot{
+    font-size: 13px;
+    color: #555;
+    line-height: 1.4;
+    cursor: pointer;
+}
+.button{
+    outline: none;
+    border: 0;
+    font-size: 16px;
+    color: #fff;
+    line-height: 1.2;
+    padding: 0 20px;
+    min-width: 150px;
+    height: 55px;
+    background-color: #333;
+    border-radius: 27px;
+    cursor: pointer;
+}
+.changeSign{
+    font-size: 13px;
+    color: #555;
+    line-height: 1.4;
+    cursor: pointer;
+}
+.loadingContainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(41, 152, 255, 0.24)
+}
+.loading{
+    padding: 0;
+    margin: 0;
+    width: 50px;
+    height: 3px;
+    border-radius: 5px;
+    animation: animate 1s infinite ease-in-out;
+    background: rgb(18, 141, 255);
+}
+@keyframes animate {
+    0%{
+        width: 50px;
+        transform: translateX(-50px);
+    }
+    50%{
+        width: 500px;
+    }
+    100%{
+        width: 50px;
+        transform: translateX(500px);
+    }
+}

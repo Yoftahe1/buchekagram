@@ -1,0 +1,131 @@
+.sidebar{
+    width: 300px;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    position: fixed;
+}
+.nomargin{
+    width: 300px;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    position: fixed;
+}
+.logo{
+    padding-left: 10px;
+
+    font-size: 25px;
+    height: 100px;
+    display: flex;
+    align-items: center;  
+    font-family: "Lobster", cursive;  
+}
+.links{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.link{  
+    height: 50px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;  
+    gap: 15px;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 5px;
+}
+.link:hover{
+    background-color: rgba(255, 255, 255, .1);
+}
+.linkName{
+    font-size: 15px;
+}
+.interactions{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.more{
+    font-size: 25px;
+    display: flex;
+    align-items: center; 
+    gap: 15px; 
+}
+
+@media (max-width:1500px) {
+    
+    
+    .more{
+        display: none;
+    }
+}
+
+@media (max-width:1100px) {
+    .sidebar{
+        margin-top: 56px;
+    }
+    .logo{
+        display: none;
+    }
+    .linkName{
+    display: none;
+    }
+    .sidebar{
+        width: auto;
+        margin-top: 54px;
+
+    }
+    .nomargin{
+        width: auto;
+    }
+    .links{
+        gap: 20px;    
+    }
+    .link{
+        height: auto;
+        border-radius: 50%;
+    }
+}
+@media (max-width:550px) {
+    .interactions{
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .sidebar{
+        width: 100vw;
+        height: auto;
+        flex-direction: row;
+        position: fixed;
+        bottom: 0;
+        padding: 8px ;
+    }
+    .nomargin{
+        width: 100vw;
+        height: auto;
+        flex-direction: row;
+        position: fixed;
+        bottom: 0;
+        padding: 8px ;
+    }
+    .links{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+    }
+    .link{
+        /* font-size: 25px; */
+    }
+}

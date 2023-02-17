@@ -1,0 +1,65 @@
+.profile{
+    width: 700px;
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.user{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.image{
+    width: 100px;
+    height: 100px;
+}
+.img{
+    width: 100px;
+    min-height: 100px;  
+    background-color: aquamarine;
+    border-radius: 50%;
+}
+.changeImg{
+    min-width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: absolute;
+    clip-path: inset(70% 0 0 0);
+    background-color: rgb(0, 0, 0,.7);
+    border-radius: 50%;
+    font-size:25px;
+}
+.friendsAndPosts{
+    display: flex;
+}
+.PostsAndLiked{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: bottom;
+    border-bottom: 2px solid rgba(255, 255, 255, .3);
+}
+.PostsAndLiked div{
+    display: flex;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    cursor: pointer;
+}
+@media (max-width:1100px) {
+    .profile{
+    margin-top: 56px;
+
+    }
+}
+@media (max-width:950px) {
+    .profile{
+        width: 550px;
+    }
+}
+@media (max-width:650px) {
+    .profile{
+        width: 450px;
+    }
+}

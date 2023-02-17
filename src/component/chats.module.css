@@ -1,0 +1,53 @@
+.Chats {
+  width: 600px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.topBar {
+  width: 600px;
+  height: 60px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  background-color: rgb(17, 17, 17);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.topBar div {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 15px 0;
+  cursor: pointer;
+}
+.container {
+  padding-top: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+@media (max-width: 1100px) {
+  .Chats {
+    margin-top: 56px;
+  }
+}
+@media (max-width: 950px) {
+  .Chats,
+  .topBar {
+    width: 550px;
+  }
+}
+@media (max-width: 650px) {
+  .Chats,
+  .topBar {
+    width: 450px;
+  }
+}
+@media (max-width: 450px) {
+  .topBar {
+    width: 100%;
+  }
+}

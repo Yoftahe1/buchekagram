@@ -1,0 +1,10 @@
+.rightSidebar{
+    width: 400px;
+    background-color: black;
+    display: block;
+}
+@media (max-width:1500px) {
+    .rightSidebar{
+        display: none;
+    }
+}

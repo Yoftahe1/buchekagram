@@ -1,0 +1,109 @@
+.message {
+  width: 600px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.topBar {
+  width: 600px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  background-color: rgb(17, 17, 17);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.profileAndBack {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.svg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  cursor: pointer;
+}
+.svg:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.texts {
+  margin-top: 70px;
+  padding-bottom: 55px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.receiver div {
+  width: fit-content;
+  max-width: 70%;
+  word-break: break-all;
+  background-color: rgb(0, 43, 107);
+  padding: 10px;
+  border-radius: 5px 5px 5px 0;
+}
+.sender div {
+  float: right;
+  clear: both;
+  width: fit-content;
+  max-width: 70%;
+  word-break: break-all;
+  background-color: rgb(66, 142, 255);
+  padding: 10px;
+  border-radius: 5px 5px 0 5px;
+}
+.messageBar {
+  width: 600px;
+  height: 45px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  font-size: 25px;
+  background-color: rgb(17, 17, 17);
+}
+.messageBar svg {
+  width: 50px;
+}
+.form {
+  width: 100%;
+}
+.input {
+  width: 100%;
+  height: 45px;
+  padding: 10px;
+  outline: none;
+  border: 0;
+  font-size: 15px;
+  color: gray;
+  background-color: transparent;
+}
+.button {
+  cursor: pointer;
+}
+@media (max-width: 950px) {
+  .message,
+  .messageBar,
+  .topBar {
+    width: 550px;
+  }
+}
+@media (max-width: 650px) {
+  .message,
+  .messageBar,
+  .topBar {
+    width: 450px;
+  }
+}
+@media (max-width: 450px) {
+  .messageBar,
+  .topBar {
+    width: 100%;
+  }
+}

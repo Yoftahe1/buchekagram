@@ -1,0 +1,32 @@
+.logoAndMore {
+  padding: 8px 20px;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  background-color: black;
+  position: fixed;
+  width: 100vw;
+  /* font-family: "Lobster", cursive; */
+}
+.logo {
+  color: white;
+  font-size: 30px;
+  font-family: "Lobster", cursive;
+}
+@media (min-width: 1100px) {
+  .logoAndMore {
+    display: none;
+  }
+}
+@media (max-width: 1100px) {
+  .logoAndMore {
+    font-size: 35px;
+  }
+}
+@media (max-width: 550px) {
+  .logoAndMore {
+    font-size: 30px;
+  }
+}
