@@ -8,11 +8,20 @@ import Context from "../store/context";
 import { useNavigate } from "react-router-dom";
 import { db } from "../fire";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { useEffect } from "react";
+import { onSnapshot } from "firebase/firestore";
+import { useState } from "react";
 
 const Message = () => {
   const text = useRef();
   const ctx = useContext(Context);
   const navigate = useNavigate();
+  const [chat,setChat]=useState([])
+  useEffect(() => {
+    onSnapshot(doc(db, "friends", ctx.docId), (doc) => {
+      setChat(doc.data().message)
+  });
+  }, [ctx.docId]);
 
   async function submit(event) {
     event.preventDefault();
@@ -39,16 +48,16 @@ const Message = () => {
       </div>
 
       <div className={styles.texts}>
-        {ctx.messages.map((element, index) => {
+        {chat.map((element, index) => {
           return (
             <div
               className={
-                ctx.uid === element[1] ? styles.sender : styles.receiver
+                ctx.uid === element.sender ? styles.sender : styles.receiver
               }
               key={index}
             >
               <div>
-                {element[0]}
+                {element.message}
                 </div>
             </div>
           );

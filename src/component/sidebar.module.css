@@ -1,25 +1,16 @@
 .sidebar{
     width: 300px;
     height: 100vh;
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: gray;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
     position: fixed;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.nomargin{
-    width: 300px;
-    height: 100vh;
-    background-color: black;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 20px;
-    position: fixed;
-}
+
 .logo{
     padding-left: 10px;
 
@@ -43,9 +34,25 @@
     cursor: pointer;
     border-radius: 50px;
     padding: 5px;
+    text-decoration: none;
+    color: gray;
+}
+.active{
+    height: 50px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;  
+    gap: 15px;
+    cursor: pointer;
+    border-radius: 50px;
+    padding: 5px;
+    text-decoration: none;
+    color: #0081C9;
 }
 .link:hover{
-    background-color: rgba(255, 255, 255, .1);
+    /* background-color: rgba(255, 255, 255, .1); */
+    background-color: rgba(128, 128, 128, 0.4);
+    /* color: aquamarine; */
 }
 .linkName{
     font-size: 15px;
@@ -62,18 +69,14 @@
     gap: 15px; 
 }
 
-@media (max-width:1500px) {
-    
-    
+@media (max-width:1500px) {    
     .more{
         display: none;
     }
 }
 
 @media (max-width:1100px) {
-    .sidebar{
-        margin-top: 56px;
-    }
+    
     .logo{
         display: none;
     }
@@ -81,11 +84,6 @@
     display: none;
     }
     .sidebar{
-        width: auto;
-        margin-top: 54px;
-
-    }
-    .nomargin{
         width: auto;
     }
     .links{
@@ -110,13 +108,8 @@
         bottom: 0;
         padding: 8px ;
     }
-    .nomargin{
-        width: 100vw;
-        height: auto;
-        flex-direction: row;
-        position: fixed;
-        bottom: 0;
-        padding: 8px ;
+    #logout{
+        display: none;
     }
     .links{
         width: 100%;
@@ -124,8 +117,5 @@
         flex-direction: row;
         justify-content: space-between;
         gap: 0;
-    }
-    .link{
-        /* font-size: 25px; */
     }
 }

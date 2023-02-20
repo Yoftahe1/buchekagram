@@ -1,11 +1,24 @@
 .posts{
+    width: 600px;
+    padding: 5px 0;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     
+}
+@media (max-width:950px) {
+    .posts{
+        width: 550px;
+    }
+}
+@media (max-width:650px) {
+    .posts{
+        width: 450px;
+    }
 }
 @media (max-width:550px) {
     .posts{
-        padding-bottom: 55px;  
+        margin-top: 56px;
+        padding-bottom: 80px;  
     }
 }

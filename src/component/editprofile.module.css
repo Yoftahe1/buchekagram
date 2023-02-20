@@ -1,9 +1,11 @@
 .profile{
-    width: 700px;
+    width: 600px;
     /* height: 100vh; */
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 10px;
+    color: gray;
 }
 .user{
     display: flex;
@@ -16,9 +18,17 @@
 }
 .img{
     width: 100px;
-    min-height: 100px;  
-    background-color: aquamarine;
+    height: 100px;  
     border-radius: 50%;
+}
+.background{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-image: url('../assets/images.jfif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 .changeImg{
     min-width: 100px;
@@ -34,7 +44,9 @@
 }
 .friendsAndPosts{
     display: flex;
+    gap: 10px;
 }
+
 .PostsAndLiked{
     display: flex;
     justify-content: space-evenly;
@@ -47,7 +59,7 @@
     align-items: center;
     cursor: pointer;
 }
-@media (max-width:1100px) {
+@media (max-width:550px) {
     .profile{
     margin-top: 56px;
 

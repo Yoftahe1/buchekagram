@@ -8,6 +8,7 @@ import {
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { auth, db } from "../fire";
 import styles from "./sign.module.css";
+
 const Sign = () => {
   const [signIn, setSignIn] = useState(true);
   let [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ const Sign = () => {
   const ctx = useContext(Context);
   const navigate = useNavigate();
   function submit() {
-    // const auth = getAuth(app);
+    setErrorMessage(null);
     setLoading(true);
     if (signIn) {
       signInWithEmailAndPassword(
@@ -28,26 +29,27 @@ const Sign = () => {
       )
         .then(async (userCredential) => {
           const docRef = doc(db, "users", userCredential.user.uid);
-          const docSnap = await getDoc(docRef);
-
-          if (docSnap.exists()) {
-            // console.log(docSnap.data());
+          try {
+            const docSnap = await getDoc(docRef);
             ctx.setUid(docSnap.data().uid);
             ctx.setUsername(docSnap.data().username);
+            ctx.setImage(docSnap.data().image)
             setLoading(false);
-
             navigate("/home");
-          } else {
+          } catch (error) {
             setLoading(false);
-
-            console.log("No such document!");
+            setErrorMessage("Something went wrong");
           }
         })
         .catch((error) => {
           setLoading(false);
-
-          console.log(error);
-          setErrorMessage(error.message);
+          if (
+            error.message === "Firebase: Error (auth/network-request-failed)."
+          ) {
+            setErrorMessage("Please check your internet connection");
+          } else {
+            setErrorMessage("Email address and Password don't match");
+          }
         });
     } else {
       createUserWithEmailAndPassword(
@@ -56,17 +58,26 @@ const Sign = () => {
         password.current.value
       )
         .then(async (userCredential) => {
-          await setDoc(doc(db, "users", userCredential.user.uid), {
-            email: email.current.value,
-            uid: userCredential.user.uid,
-            username: username.current.value,
-          });
+          try {
+            await setDoc(doc(db, "users", userCredential.user.uid), {
+              email: email.current.value,
+              uid: userCredential.user.uid,
+              username: username.current.value,
+            });
+          } catch (error) {
+            setLoading(false);
+            setErrorMessage("Something went wrong");
+          }
         })
         .catch((error) => {
           setLoading(false);
-
-          console.log(error);
-          setErrorMessage(error.message);
+          if (
+            error.message === "Firebase: Error (auth/network-request-failed)."
+          ) {
+            setErrorMessage("Please check your internet connection");
+          } else {
+            setErrorMessage("Email address already taken");
+          }
         });
     }
   }
@@ -79,26 +90,41 @@ const Sign = () => {
       {!signIn && (
         <>
           <p className={styles.inputType}>User-name</p>
-          <input className={styles.input} ref={username} />
+          <input
+            className={styles.input}
+            ref={username}
+            placeholder="Enter Username"
+          />
         </>
       )}
       <p className={styles.inputType}>Email</p>
-      <input className={styles.input} ref={email} value='test@test.com'/>
+      <input
+        className={styles.input}
+        ref={email}
+        placeholder="Enter Email address"
+        defaultValue="test@test.com"
+      />
       <p className={styles.inputType}>Password</p>
-      <input className={styles.input} ref={password} value='test@test'/>
+      <input
+        className={styles.input}
+        ref={password}
+        placeholder="Enter Password"
+        defaultValue="test@test"
+      />
       <div className={styles.container}>
         <p
           className={styles.changeSign}
           onClick={() => {
+            setErrorMessage(null);
             setSignIn(!signIn);
           }}
         >
           {signIn === true ? "Sign-Up" : "Sign-In"}
         </p>
 
-        <p className={styles.forgot}>test@test2 Forgot Password?</p>
+        <p className={styles.forgot}>Forgot Password?</p>
       </div>
-
+      <p className={styles.error}>{errorMessage}</p>
       <button className={styles.button} onClick={submit}>
         {signIn === true ? "Sign-In" : "Sign-Up"}
       </button>

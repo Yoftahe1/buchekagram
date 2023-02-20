@@ -1,39 +1,33 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext } from "react";
 import styles from "./post.module.css";
-import { MdOutlineFavoriteBorder } from "react-icons/md";
-import { AiOutlineShareAlt } from "react-icons/ai";
+import { MdOutlineFavoriteBorder,MdFavorite } from "react-icons/md";
+import { BiCommentDetail } from "react-icons/bi";
 import { TbMessageCircle } from "react-icons/tb";
 import Profile from "./profile";
 import { doc, updateDoc, arrayUnion } from "firebase/firestore";
 import { db } from "../fire";
 import Context from "../store/context";
-
+import { useLocation, useNavigate } from "react-router-dom";
+import { SlClose } from "react-icons/sl";
+// import Ripple from 'ripple-button'
+// import { Button } from "button-ripple-react";
 const Post = (props) => {
-  const comment = useRef();
   const ctx = useContext(Context);
-  async function addComment() {
-    if (comment.current.value.trim().length > 0) {
-      const commentRef = doc(db, "trends", props.element[5]);
-      await updateDoc(commentRef, {
-        comment: arrayUnion({
-          senderUid: ctx.uid,
-          senderUsername: ctx.username,
-          message: comment.current.value,
-        }),
-      });
-    }
-    comment.current.value = "";
-  }
+  const navigate=useNavigate()
+  const location =useLocation()
+
   async function like() {
-    const commentRef = doc(db, "trends", props.element[5]);
+    const commentRef = doc(db, "trends", props.element[6]);
     await updateDoc(commentRef, {
       likes: arrayUnion(ctx.uid),
     });
   }
+  
   return (
     <div className={styles.post}>
       <div className={styles.user}>
         <Profile name={props.element[3]} />
+        {location.pathname==='/editprofile'&&<SlClose />}
       </div>
       <div className={styles.posted}>
         {props.element[0].length !== 0 && (
@@ -48,29 +42,24 @@ const Post = (props) => {
         )}
 
         <div className={styles.interactions}>
+        {/* <Ripple color="rgba(12, 33, 124, 0.3)" duration={500} style={{width:'min-content'}}> */}
+        {/* <Button backgroundColor="transparent"> */}
           <div className={styles.button} onClick={like}>
-            <MdOutlineFavoriteBorder />
-            <p className={styles.type}>{props.element[4].length} Likes</p>
+            {props.element[4].includes(ctx.uid)?<MdFavorite/>:<MdOutlineFavoriteBorder />}
+            {props.element[4].length}
+            <p className={styles.type}> Like</p>
           </div>
-          <div className={styles.button}>
-            <AiOutlineShareAlt />
-            <p className={styles.type}>Share</p>
+          {/* </Button> */}
+          {/* </Ripple> */}
+          <div className={styles.button} onClick={()=>{ctx.setID(props.element[6]);ctx.setComment(props.element[5]);navigate('/comment')}}>
+            <BiCommentDetail />
+            {props.element[5].length}
+            <p className={styles.type}> Comment</p>
           </div>
           <div className={styles.button}>
             <TbMessageCircle />
             <p className={styles.type}>Message</p>
           </div>
-        </div>
-
-        <div className={styles.postMessage}>
-          <input
-            className={styles.input}
-            ref={comment}
-            placeholder="Leave your comment."
-          />
-          <button className={styles.postButton} onClick={addComment}>
-            Post
-          </button>
         </div>
       </div>
     </div>

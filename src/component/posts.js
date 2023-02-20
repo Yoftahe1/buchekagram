@@ -16,6 +16,7 @@ const Posts = () => {
               doc.data().uid,
               doc.data().username,
               doc.data().likes,
+              doc.data().comment,
               doc.id,
             ],
             ...trends,

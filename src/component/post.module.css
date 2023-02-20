@@ -7,10 +7,19 @@
 .posted{
     margin-left:60px ;
 }
+.user{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user svg{
+    font-size: 30px;
+}
 .description{
     padding-bottom: 10px ;
     font-size: 16px;
     font-weight: 500;
+    color: gray;
 }
 .postImage{
     width: 100%;
@@ -20,11 +29,11 @@
     display: flex;
     justify-content: space-between;
     font-size: 15px;
-    color: rgba(172, 172, 172, 0.5);
+    color: gray;
 }
 .button{
     width: 30%;
-    padding: 5px 0;
+    padding: 10px 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -33,11 +42,11 @@
     box-sizing: content-box;
 }
 .button:hover{
-    border-bottom: 2px solid rgba(128, 128, 128, 0.267);
+    background-color: rgb(128, 128, 128,.4);
 }
-.postMessage{
+.comment{
     display: flex;
-    border-bottom: 3px solid rgba(128, 128, 128, 0.267);
+    
 }
 .input{
     width: 100%;
@@ -47,16 +56,23 @@
     outline: none;
     border: none;
     background-color: transparent;
-    color: rgba(172, 172, 172, 0.5);
+    color: gray;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.267);
 }
 .postButton{
     padding: 0 10px;
     font-size: 15px;
-    color: rgba(172, 172, 172, 0.5);
+    color: gray;
     background-color: transparent;
     border: none;
     outline: none;
     cursor: pointer;
+}
+.postButton:hover{
+    background-color: rgb(128, 128, 128,.4);
+}
+.react-ripple-container{
+    width: fit-content;
 }
 @media (max-width:600px) {
     .type{

@@ -1,13 +1,15 @@
 import { useState, createContext } from "react";
 const Context = createContext({
   person:'',
-  messages:[],
+  image:'',
+  comments:[],
   docId:'',
   username:'',
   uid:'',
   night:'',
   setPerson:(person)=>{},
-  setMessage:(message)=>{},
+  setImage:(image)=>{},
+  setComment:(message)=>{},
   setID:(id)=>{},
   setUsername:(name)=>{},
   setUid:(id)=>{},
@@ -16,7 +18,8 @@ const Context = createContext({
 
 export function ContextProvider(props) {
   const [person, setNewPerson] = useState();
-  const [messages, setAllMessages] = useState();
+  const [image, setPic] = useState();
+  const [comments, setAllComment] = useState();
   const [docId, setDocId] = useState();
   const [username, setName] = useState();
   const [uid, setuid] = useState(null);
@@ -24,8 +27,11 @@ export function ContextProvider(props) {
   function setPerson(person) {
     setNewPerson(person);
   }
-  function setMessage(message) {
-    setAllMessages(message);
+  function setImage(newImage) {
+    setPic(newImage);
+  }
+  function setComment(comment) {
+    setAllComment(comment);
   }
   function setID(id) {
     setDocId(id);
@@ -41,13 +47,15 @@ export function ContextProvider(props) {
   }
   const contextValues = {
     person:person,
-    messages:messages,
+    image:image,
+    comments:comments,
     username:username,
     uid:uid,
     docId:docId,
     night:night,
     setPerson:setPerson,
-    setMessage:setMessage,
+    setImage:setImage,
+    setComment:setComment,
     setID:setID,
     setUsername:setUsername, 
     setUid:setUid,

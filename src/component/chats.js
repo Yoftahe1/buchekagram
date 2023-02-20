@@ -8,6 +8,7 @@ import { db } from "../fire";
 const Chats = () => {
   const navigate = useNavigate();
   const [chat, setChat] = useState([]);
+  const [type,setType]=useState('chats')
   const ctx = useContext(Context);
   useEffect(() => {
     const q = query(
@@ -36,17 +37,17 @@ const Chats = () => {
   }, [ctx.uid]);
   function setPersonAndMessage(person, message, id) {
     ctx.setPerson(person);
-    ctx.setMessage(message);
+    // ctx.setMessage(message);
     ctx.setID(id);
   }
   return (
     <div className={styles.Chats}>
       <div className={styles.topBar}>
-        <div>Chats</div>
-        <div>Groups</div>
-        <div>Channels</div>
+        <div onClick={()=>setType('chats')}>Chats</div>
+        <div onClick={()=>setType('groups')}>Groups</div>
+        <div onClick={()=>setType('channels')}>Channels</div>
       </div>
-      <div className={styles.container}>
+      {type==='chats'?<div className={styles.container}>
         {chat.map((element, index) => {
           return (
             <div
@@ -57,14 +58,16 @@ const Chats = () => {
                 navigate("/chat");
               }}
               key={index}
+              className={styles.user}
             >
               <Profile
                 name={ctx.uid === element[0][0] ? element[1][1] : element[1][0]}
               />
+              <div className={styles.notification}>11</div>
             </div>
           );
         })}
-      </div>
+      </div>:type==='groups'?null:null}
     </div>
   );
 };
